@@ -6,7 +6,9 @@ nr = InitNornir(config_file="config.yaml")
 
 # command_list = ["show int summ | inc Gig", "sh version | inc Uptime", "sh users | inc vty"]
 
-command_list = ["sh ip interf brief"]
+#command_list = ["sh ip interf brief"]
+
+command_list = ["write mem"]
 
 def show_command_list (task):
     for cmd in command_list:
