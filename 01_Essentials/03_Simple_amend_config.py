@@ -1,9 +1,13 @@
+import os
 from nornir import InitNornir
 from nornir_scrapli.tasks import send_configs
 from nornir_scrapli.tasks import send_command
 from nornir_utils.plugins.functions import print_result
 
 nr = InitNornir(config_file="config.yaml")
+
+nr.inventory.defaults.username = os.environ["USERNAME"]
+nr.inventory.defaults.password = os.environ["PASSWORD"]
 
 def simple_send(task):
     task.run(task=send_configs, configs=["line vty 0 4", "exec-timeout 0 0"])

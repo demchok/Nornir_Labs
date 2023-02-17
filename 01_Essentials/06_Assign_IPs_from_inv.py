@@ -1,12 +1,15 @@
 # This is a stupid version of the assign script. At the end of the file you can see
 # another version which is a much more decent piece of programming, but the problem 
 # with it is that is doesn't work because of the Python/Nornir data structure limitations
-
+import os
 from nornir import InitNornir
 from nornir_scrapli.tasks import send_configs
 from nornir_utils.plugins.functions import print_result
 
 nr = InitNornir(config_file="config.yaml")
+
+nr.inventory.defaults.username = os.environ["USERNAME"]
+nr.inventory.defaults.password = os.environ["PASSWORD"]
 
 def set_ip_gig2(task):
     task.run(task=send_configs, configs=["interf gig2", f"ip address {task.host['gig2_ip']} {task.host['gig2_netmask']}"])

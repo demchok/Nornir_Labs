@@ -1,8 +1,8 @@
 ---
 
 all_devices:
-    username: "ilya"
-    password: "cisco123"
+    data:
+        ntp_server: "10.10.10.1"
 
 australia:
     data:
